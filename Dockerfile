@@ -6,7 +6,6 @@ RUN [[ "$TAG" = "latest" ]] && \
     wget https://github.com/MyEtherWallet/MyEtherWallet/releases/download/${TAG}/MyEtherWallet-${TAG}-Offline.zip && \
     unzip MyEtherWallet-${TAG}-Offline.zip -d MyEtherWallet
 
-FROM pierrezemb/gostatic
+FROM lipanski/docker-static-website
 
-COPY --from=base /MyEtherWallet /srv/http
-EXPOSE 8043
+COPY --from=base /MyEtherWallet .
